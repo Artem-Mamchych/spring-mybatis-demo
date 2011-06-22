@@ -4,6 +4,9 @@
     <option name="ajcPath" value="$MAVEN_REPOSITORY$/org/aspectj/aspectjtools/1.6.9/aspectjtools-1.6.9.jar" />
     <option name="cmdLineParams" value="-target 1.6" />
   </component>
+  <component name="AntConfiguration">
+    <defaultAnt bundledAnt="true" />
+  </component>
   <component name="ArtifactManager">
     <artifact type="war" name="demo:war">
       <output-path>$PROJECT_DIR$/target</output-path>
@@ -20,6 +23,7 @@
             <element id="module-output" name="demo" />
           </element>
           <element id="directory" name="lib">
+            <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.0.5" />
             <element id="library" level="project" name="Maven: org.springframework:spring-context:3.0.4.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.0.4.RELEASE" />
             <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
@@ -31,6 +35,7 @@
             <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.0.4.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-web:3.0.4.RELEASE" />
             <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.6.9" />
+            <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.16" />
             <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.10" />
             <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.5.10" />
             <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.5.10" />
@@ -319,6 +324,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.15/log4j-1.2.15-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: mysql:mysql-connector-java:5.1.16">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.16/mysql-connector-java-5.1.16.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.16/mysql-connector-java-5.1.16-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.16/mysql-connector-java-5.1.16-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: org.aspectj:aspectjrt:1.6.9">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.6.9/aspectjrt-1.6.9.jar!/" />
@@ -328,6 +344,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.6.9/aspectjrt-1.6.9-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.mybatis:mybatis:3.0.5">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.0.5/mybatis-3.0.5.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.0.5/mybatis-3.0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.0.5/mybatis-3.0.5-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.slf4j:jcl-over-slf4j:1.5.10">

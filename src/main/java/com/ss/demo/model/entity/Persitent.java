@@ -1,7 +1,7 @@
 package com.ss.demo.model.entity;
 
 public interface Persitent {
-    Long getId();
+    Integer getId();
 
-    void setId(Long id);
+    void setId(Integer id);
 }

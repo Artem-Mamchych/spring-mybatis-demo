@@ -2,17 +2,17 @@ package com.ss.demo.model.entity;
 
 import java.util.Date;
 
-public class Message {
+public class Message implements Persitent {
 
-    private Long id;
+    private Integer id;
     private String messageContent;
     private Date datePosted;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
