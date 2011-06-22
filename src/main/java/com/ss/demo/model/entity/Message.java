@@ -2,7 +2,7 @@ package com.ss.demo.model.entity;
 
 import java.util.Date;
 
-public class Message implements Persitent {
+public class Message extends Persistent {
 
     private Integer id;
     private String messageContent;

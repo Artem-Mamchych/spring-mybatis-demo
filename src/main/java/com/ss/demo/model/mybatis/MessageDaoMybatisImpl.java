@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.Reader;
 import java.util.List;
 
-//FIXME not works!
 public class MessageDaoMybatisImpl implements MessageDaoMybatis {
     private SqlSession session = null;
     private MessageMapper mapper;
@@ -47,22 +46,22 @@ public class MessageDaoMybatisImpl implements MessageDaoMybatis {
         throw new RuntimeException("saveOrUpdate() not implemented yet");
     }
 
-    @Override
     public void save(Message persistent) {
         mapper.insert(persistent);
     }
 
-    @Override
     public void update(Message persistent) {
         mapper.update(persistent);
     }
 
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         mapper.delete(id);
+        return false; //TODO  implementMe
     }
 
-    public void delete(Message persistent) {
+    public boolean delete(Message persistent) {
         mapper.delete(persistent.getId());
+        return false; //TODO  implementMe
     }
 
     public Message get(Integer id) {
@@ -71,6 +70,11 @@ public class MessageDaoMybatisImpl implements MessageDaoMybatis {
 
     public List<Message> getAll() {
         return mapper.selectAll();
+    }
+
+    //TODO implementMe
+    public boolean isExist(Integer id) {
+        return false;
     }
 
 }

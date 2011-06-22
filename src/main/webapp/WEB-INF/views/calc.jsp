@@ -13,7 +13,7 @@
         <input type="submit" value="Calc"/>
     </form>
     <hr/>
-    <a href="../index">Home</a>
+    <!-- <a href="/index">Home</a> -->
     <b>&nbsp;&nbsp;SumController.handleRequestInternal()</b> called ${count} times
   </body>
 </html>
