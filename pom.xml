@@ -9,7 +9,7 @@
     <version>1.0-M1</version>
     <properties>
         <java-version>1.6</java-version>
-        <org.springframework-version>3.0.4.RELEASE</org.springframework-version>
+        <org.springframework-version>3.0.5.RELEASE</org.springframework-version>
         <org.springframework.roo-version>1.0.2.RELEASE</org.springframework.roo-version>
         <org.aspectj-version>1.6.9</org.aspectj-version>
         <org.slf4j-version>1.5.10</org.slf4j-version>
@@ -20,6 +20,24 @@
             <artifactId>mybatis</artifactId>
             <version>3.0.5</version>
         </dependency>
+        <!-- JDBC -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- <dependency>
+         <groupId>org.unitils</groupId>
+         <artifactId>unitils-core</artifactId>
+         <version>3.1</version>
+         <scope>test</scope>
+       </dependency> -->
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -38,6 +56,11 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
         <!-- Roo dependencies -->
         <dependency>
             <groupId>org.springframework.roo</groupId>
@@ -51,12 +74,6 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
             <version>${org.aspectj-version}</version>
-        </dependency>
-        <!-- JDBC -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.16</version>
         </dependency>
         <!-- Logging -->
         <dependency>
@@ -79,7 +96,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
+            <version>1.2.16</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.mail</groupId>
@@ -131,10 +148,21 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.7</version>
+            <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Joda Time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>1.5</version>
+        </dependency>
     </dependencies>
     <repositories>
         <!-- For testing against latest Spring snapshots -->
@@ -164,6 +192,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
                     <source>${java-version}</source>
                     <target>${java-version}</target>
@@ -172,10 +201,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.1</version>
                 <executions>
                     <execution>
                         <id>install</id>
@@ -221,6 +252,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.8</version>
                 <configuration>
                     <junitArtifactName>junit:junit</junitArtifactName>
                     <excludes>
@@ -231,12 +263,12 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.0-beta-1</version>
+                <version>1.1</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.0.2</version>
+                <version>1.0.6</version>
                 <configuration>
                     <wait>true</wait>
                     <container>
@@ -255,10 +287,25 @@
                                 <groupId>com.ss.demo</groupId>
                                 <artifactId>spring-demo</artifactId>
                                 <type>war</type>
-                                <location>target/${name}-${version}.war</location>
+                                <location>target/${project.name}-${project.version}.war</location>
                             </deployable>
                         </deployables>
                     </deployer>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.10</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                <stopKey>JETTY_STOP</stopKey>
+                <stopPort>8889</stopPort>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8888</port>
+                        </connector>
+                    </connectors>
                 </configuration>
             </plugin>
         </plugins>

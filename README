@@ -1,0 +1,11 @@
+Initialize mysql database with script /sql/initdb.sql
+
+Change mysql login/password in files:
+src/main/resources/iBatisConfig.xml
+src/main/resources/ibatorConfig.xml
+
+To build and deploy application use:
+
+mvn jetty:run-war
+This goal will first package your webapp as a war file and then deploy it to Jetty.
+If you set a non-zero scanInterval Jetty will watch your pom.xml and the war file and if either changes, it will redeploy the war.

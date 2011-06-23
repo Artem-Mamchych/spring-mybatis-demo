@@ -7,15 +7,15 @@
 <head></head>
 <body>
 <h1>
-TODO: use spring:message code="label.author"
+Test
 </h1>
 <table border="1" width="100%">
     <c:forEach var="message" items="${messages}" varStatus="i">
         <tr>
-            <td width="20%">Date: <c:out
+            <td width="20%"><spring:message code="label.message.datePosted"/> <c:out
                     value="${message.datePosted}"/>
             </td>
-            <td width="80%">Text: <c:out
+            <td width="80%"><spring:message code="label.message.messageContent"/> <c:out
                     value="${message.messageContent}"/>
             </td>
 

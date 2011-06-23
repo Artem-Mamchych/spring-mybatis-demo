@@ -28,7 +28,7 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @RequestMapping(value = "/messages/all", method = RequestMethod.GET)
+    @RequestMapping(value={"/", "/index", "/messages/all"}, method = RequestMethod.GET)
     public ModelAndView showAll() throws NotFoundException {
 
         List<Message> messages = messageService.getAll();
