@@ -1,6 +1,7 @@
 package com.ss.demo.model.entity;
 
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Message extends Persistent {
 
@@ -40,4 +41,12 @@ public class Message extends Persistent {
                 ", datePosted=" + datePosted +
                 '}';
     }
+
+    public Long assignId() {
+        Long nextId = idSequence.incrementAndGet();
+        this.id = nextId.intValue();
+		return nextId;
+	}
+
+    private static final AtomicLong idSequence = new AtomicLong();
 }

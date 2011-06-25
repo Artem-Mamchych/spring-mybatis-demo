@@ -14,14 +14,19 @@ Test
         <tr>
             <td width="20%"><spring:message code="label.message.datePosted"/> <c:out
                     value="${message.datePosted}"/>
+
             </td>
             <td width="80%"><spring:message code="label.message.messageContent"/> <c:out
                     value="${message.messageContent}"/>
             </td>
-
+            <td>
+                 <a href="${pageContext.request.contextPath}/message/<c:out
+                    value="${message.id}"/>"><spring:message code="label.message.edit"/></a>
+                <a href="${pageContext.request.contextPath}/message/add"><spring:message code="label.message.delete"/></a>
+            </td>
         </tr>
     </c:forEach>
 </table>
-
+<a href="${pageContext.request.contextPath}/message/"><spring:message code="label.message.add"/></a>
 </body>
 </html>

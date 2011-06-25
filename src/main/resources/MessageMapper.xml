@@ -36,4 +36,8 @@
 		where id = #{value}
 	</select>
 
+    <select id="getLastInsertId" resultType="message">
+		select max(id) from messages
+	</select>
+
 </mapper>

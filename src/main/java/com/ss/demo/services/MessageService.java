@@ -5,7 +5,7 @@ import com.ss.demo.services.exceptions.NotFoundException;
 
 import java.util.List;
 
-public interface MessageService extends EntityService<Message> {
+public interface MessageService {
 
     /**
      * Adds message.
@@ -17,7 +17,7 @@ public interface MessageService extends EntityService<Message> {
 //     * @param messageId  target message primary id.
 //     * @param messageBody the text of the message
     //void add(Integer messageId, String messageBody) throws NotFoundException;
-    void add(Message message) throws NotFoundException;
+    void add(Message message);
 
     /**
      * Deletes message.
@@ -41,4 +41,6 @@ public interface MessageService extends EntityService<Message> {
      * @throws NotFoundException when branch not found
      */
     Message get(Integer messageId) throws NotFoundException;
+
+    public long getNextId();
 }

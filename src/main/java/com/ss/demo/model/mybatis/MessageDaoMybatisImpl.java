@@ -35,6 +35,10 @@ public class MessageDaoMybatisImpl implements MessageDaoMybatis {
         }
     }
 
+    public Integer getLastInsertId(){
+           return mapper.getLastInsertId();
+    }
+
     public void finalize() {
         if (session != null) {
             session.close();
@@ -72,9 +76,13 @@ public class MessageDaoMybatisImpl implements MessageDaoMybatis {
         return mapper.selectAll();
     }
 
-    //TODO implementMe
     public boolean isExist(Integer id) {
-        return false;
+        Message m = mapper.select(id);
+        if (m != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

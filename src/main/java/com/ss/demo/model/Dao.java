@@ -18,7 +18,6 @@
 
 package com.ss.demo.model;
 
-import com.ss.demo.model.entity.Message;
 import com.ss.demo.model.entity.Persistent;
 
 import java.util.List;
@@ -34,13 +33,22 @@ public interface Dao<T extends Persistent> {
     /**
      * Save or update the persistent object.
      *
-     * @param persistent object to save
+     * @param persistent object to save or update
      */
     void saveOrUpdate(T persistent);
 
-    //TODO
+    /**
+     * Save the persistent object.
+     *
+     * @param persistent object to save
+     */
     public void save(T persistent);
 
+    /**
+     * Update the persistent object.
+     *
+     * @param persistent object to update
+     */
     public void update(T persistent);
 
     /**
@@ -51,7 +59,12 @@ public interface Dao<T extends Persistent> {
      */
     boolean delete(Integer id);
 
-    //TODO
+    /**
+     * Delete the object by it's id.
+     *
+     * @param persistent persistent instance
+     * @return {@code true} if entity deleted successfully
+     */
     boolean delete(T persistent);
 
     /**
@@ -62,7 +75,11 @@ public interface Dao<T extends Persistent> {
      */
     T get(Integer id);
 
-    //TODO
+    /**
+     * Get all Persistence instances
+     *
+     * @return List with all Persistence instances
+     */
     List<T> getAll();
 
     /**

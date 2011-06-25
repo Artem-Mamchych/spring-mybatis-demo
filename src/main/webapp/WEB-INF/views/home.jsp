@@ -9,6 +9,7 @@
 	Hello world!
 </h1>
 <br/>
-<a href="sum">Calculator</a>
+<a href="sum">Calculator</a><br/>
+<a href="${pageContext.request.contextPath}/message-all">Messages</a>
 </body>
 </html>
