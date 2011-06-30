@@ -68,4 +68,8 @@ public class TransactionalMessageService implements MessageService {
         long id = dao.getLastInsertId();
         return id + 1;
     }
+
+    public void update(Message persistent){
+        dao.update(persistent);
+    }
 }

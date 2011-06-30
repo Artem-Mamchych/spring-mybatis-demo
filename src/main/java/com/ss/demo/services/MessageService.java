@@ -42,5 +42,8 @@ public interface MessageService {
      */
     Message get(Integer messageId) throws NotFoundException;
 
-    public long getNextId();
+
+    void update(Message persistent);
+
+    long getNextId();
 }
