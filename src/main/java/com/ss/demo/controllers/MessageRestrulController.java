@@ -36,14 +36,14 @@ public class MessageRestrulController {
         this.messageService = messageService;
     }
 
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="create", method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
 	    logger.info("getCreateForm RequestMapping(method=RequestMethod.GET)");
 		model.addAttribute(new Message());
 		return "message/createForm";
 	}
 
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(value="create", method=RequestMethod.POST)
 	public String create(Message message, BindingResult result) {
 	    logger.info("create RequestMapping(method=RequestMethod.POST)");
 		if (result.hasErrors()) {
@@ -54,7 +54,7 @@ public class MessageRestrulController {
 		return "redirect:/message/" + message.getId();
 	}
 
-	@RequestMapping(value="{id}", method=RequestMethod.GET)
+	@RequestMapping(value="show/{id}", method=RequestMethod.GET)
 	public String getView(@PathVariable Long id, Model model) {
 	    logger.info("getView RequestMapping(value={id}, method=RequestMethod.GET)");
         Message message = null;
@@ -70,9 +70,9 @@ public class MessageRestrulController {
 		return "message/view";
 	}
 
-    @RequestMapping(value="{id}", method=RequestMethod.DELETE)
+    @RequestMapping(value="delete/{id}", method=RequestMethod.GET)
 	public String delete(@PathVariable Long id, Model model) {
-	    logger.info("RequestMethod.DELETE handler");
+	    logger.info("delete/{id} handler");
         try {
             this.messageService.delete(id.intValue());
         } catch (NotFoundException e) {
@@ -81,9 +81,9 @@ public class MessageRestrulController {
 		return "redirect:/message-all";
 	}
 
-    @RequestMapping(value="{id}", method=RequestMethod.PUT)
-	public String update(@PathVariable Long id, Model model) {
-	    logger.info("RequestMethod.PUT handler");
+    @RequestMapping(value="update/{id}", method=RequestMethod.GET)
+	public String getEditForm(@PathVariable Long id, Model model) {
+	    logger.info("update/{id} handler");
         Message message = null;
         try {
             message = messageService.get(id.intValue());
@@ -92,4 +92,35 @@ public class MessageRestrulController {
         }
 		return "redirect:/message-all"; //TODO redirect to edit form
 	}
+
+    @RequestMapping(value="update/{id}", method=RequestMethod.GET)
+	public String update(@PathVariable Long id, Model model) {
+	    logger.info("update/{id} handler");
+        Message message = null;
+        try {
+            message = messageService.get(id.intValue());
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+		return "redirect:/message-all"; //TODO redirect to edit form
+	}
+/*
+	@RequestMapping(value="create", method=RequestMethod.GET)
+	public String getCreateForm(Model model) {
+	    logger.info("getCreateForm RequestMapping(method=RequestMethod.GET)");
+		model.addAttribute(new Message());
+		return "message/createForm";
+	}
+
+	@RequestMapping(value="create", method=RequestMethod.POST)
+	public String create(Message message, BindingResult result) {
+	    logger.info("create RequestMapping(method=RequestMethod.POST)");
+		if (result.hasErrors()) {
+			return "message/createForm";
+		}
+		message.setDatePosted(new Date(System.currentTimeMillis()));
+        messageService.add(message);
+		return "redirect:/message/" + message.getId();
+	}
+ */
 }
