@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,12 +51,9 @@ public class MessageController {
     public ModelAndView getAllMessages() throws NotFoundException {
         logger.info("getAllMessages GET");
         List<Message> messages = messageService.getAll();
-        //Message newMessage = new Message();
-        //newMessage.setMessageContent("Type text");
 
         ModelAndView mav = new ModelAndView("messageList");
         mav.addObject("messages", messages);
-        //mav.addObject("newMessage", newMessage);
         return mav;
     }
 
@@ -85,12 +83,12 @@ public class MessageController {
 	}
 
     @RequestMapping(value= UPDATE_ID, method=RequestMethod.POST)
-	public String update(Message message, BindingResult result) {
-        logger.info("update|" + UPDATE_ID);
+	public String update(@ModelAttribute("message") Message message, BindingResult result) {
+        logger.info("update|" + message);
 		if (result.hasErrors()) {
 			return "message/createForm";
 		}
-		//message.setDatePosted(new Date(System.currentTimeMillis()));
+		message.setDatePosted(new Date(System.currentTimeMillis()));
         messageService.update(message);
 		return REDIRECT_MESSAGE_SHOW_ALL;
 	}

@@ -16,6 +16,7 @@
 	</h1>
 	<div class="span-12 last">
 		<form:form modelAttribute="message" action="message" method="post">
+            <form:input path="id" readonly="true" type="hidden" />
 		  	<fieldset>
 				<legend>Message Fields</legend>
 				<p>

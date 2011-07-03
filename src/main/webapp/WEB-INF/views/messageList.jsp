@@ -6,9 +6,6 @@
 <html>
 <head></head>
 <body>
-<h1>
-Test
-</h1>
 <table border="1" width="100%">
     <c:forEach var="message" items="${messages}" varStatus="i">
         <tr>

@@ -16,6 +16,4 @@ public interface MessageMapper {
 
 	Integer delete(Integer id);
 
-    Integer getLastInsertId();
-
 }

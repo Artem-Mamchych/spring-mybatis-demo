@@ -10,41 +10,20 @@ import java.util.List;
 public class TransactionalMessageService implements MessageService {
 
     //private final SecurityService securityService;
-    /*private MessageService messageService;*/
     private MessageDaoMybatis dao;
 
-    public TransactionalMessageService(/*MessageService messageService, */MessageDaoMybatis messageDao) {
-        /*this.messageService = messageService;*/
+    public TransactionalMessageService(MessageDaoMybatis messageDao) {
         this.dao = messageDao;
     }
 
     @Override
     public void add(Message message) {
-        // Check if the user is authenticated
-//        if (currentUser == null) {
-//            throw new IllegalStateException("User should log in to post answers.");
-//        }
-
-//        Message m = dao.get(message.getId());
-//        if (m == null) {
-//            throw new NotFoundException("Message with id: " + message.getId() + " not found");
-//        }
-        //dao.saveOrUpdate();
         dao.save(message);
     }
 
     @Override
     public List<Message> getAll() throws NotFoundException {
-          // Check if the user is authenticated
-//        if (currentUser == null) {
-//            throw new IllegalStateException("User should log in to post answers.");
-//        }
-
         List<Message> list = dao.getAll();
-//        if (list == null) {
-//            throw new NotFoundException("Message with id: " + message.getId() + " not found");
-//        }
-        //dao.saveOrUpdate();
         return list;
     }
 
@@ -64,11 +43,7 @@ public class TransactionalMessageService implements MessageService {
         dao.delete(id);
     }
 
-    public long getNextId(){
-        long id = dao.getLastInsertId();
-        return id + 1;
-    }
-
+    @Override
     public void update(Message persistent){
         dao.update(persistent);
     }

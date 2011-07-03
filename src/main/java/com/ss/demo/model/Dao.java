@@ -31,13 +31,6 @@ import java.util.List;
 public interface Dao<T extends Persistent> {
 
     /**
-     * Save or update the persistent object.
-     *
-     * @param persistent object to save or update
-     */
-    void saveOrUpdate(T persistent);
-
-    /**
      * Save the persistent object.
      *
      * @param persistent object to save

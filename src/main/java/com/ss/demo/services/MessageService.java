@@ -14,9 +14,6 @@ public interface MessageService {
      * @param message Message instance
      * @throws NotFoundException when message not found
      */
-//     * @param messageId  target message primary id.
-//     * @param messageBody the text of the message
-    //void add(Integer messageId, String messageBody) throws NotFoundException;
     void add(Message message);
 
     /**
@@ -42,8 +39,11 @@ public interface MessageService {
      */
     Message get(Integer messageId) throws NotFoundException;
 
-
-    void update(Message persistent);
-
-    long getNextId();
+    /**
+     * Updates message.
+     *
+     * @param message message instance.
+     * @throws NotFoundException when branch not found
+     */
+    void update(Message message);
 }

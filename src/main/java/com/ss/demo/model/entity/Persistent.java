@@ -26,8 +26,6 @@ public abstract class Persistent {
 
     private Integer id;
 
-    private String uuid = java.util.UUID.randomUUID().toString();
-
     /**
      * Get the primary id of the persistent object.
      * @return the id
@@ -42,47 +40,5 @@ public abstract class Persistent {
      */
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    /**
-     * Get the unique id.
-     * @return the uuid
-     */
-    public String getUuid() {
-        return this.uuid;
-    }
-
-    /**
-     * Set the unique id for the persistent object.
-     * @param uuid uuid to set
-     */
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    /**
-     * {@inheritDoc }
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Persistent other = (Persistent) obj;
-        return uuid.equals(other.uuid);
-    }
-
-    /**
-     * {@inheritDoc }
-     */
-    @Override
-    public int hashCode() {
-        return uuid.hashCode();
     }
 }

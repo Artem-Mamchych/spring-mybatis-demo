@@ -5,6 +5,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Reader;
 import java.util.List;
@@ -12,15 +14,25 @@ import java.util.List;
 public class MessageDaoMybatisImpl implements MessageDaoMybatis {
     private SqlSession session = null;
     private MessageMapper mapper;
+    private static final Logger logger = LoggerFactory.getLogger(MessageDaoMybatisImpl.class);
 
+    /**
+     * Singleton inmplementation
+     */
     private static class SingletonHolder {
         public static MessageDaoMybatisImpl instance = new MessageDaoMybatisImpl();
     }
 
+    /**
+     * Returns inctance of MessageDaoMybatisImpl
+     */
     public static MessageDaoMybatisImpl getInstance() {
         return SingletonHolder.instance;
     }
 
+    /**
+     * Use getInstance() to get instance of this object
+     */
     protected MessageDaoMybatisImpl() {
         try {
             String aResource = "iBatisConfig.xml";
@@ -29,25 +41,18 @@ public class MessageDaoMybatisImpl implements MessageDaoMybatis {
             session = sessionFactory.openSession();
             mapper = session.getMapper(MessageMapper.class);
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            //log.error("Exception caught: " + e.getMessage(), e);
+            logger.error("Exception caught: " + e.getMessage(), e);
         }
     }
 
-    public Integer getLastInsertId(){
-           return mapper.getLastInsertId();
-    }
-
+    /**
+     * Performs cleanup, when object unneeded. Resets state of this Dao
+     */
     public void finalize() {
         if (session != null) {
             session.close();
         }
         SingletonHolder.instance = null;
-    }
-
-    public void saveOrUpdate(Message persistent) {
-        throw new RuntimeException("saveOrUpdate() not implemented yet");
     }
 
     public void save(Message persistent) {
@@ -60,12 +65,12 @@ public class MessageDaoMybatisImpl implements MessageDaoMybatis {
 
     public boolean delete(Integer id) {
         mapper.delete(id);
-        return false; //TODO  implementMe
+        return true;
     }
 
     public boolean delete(Message persistent) {
         mapper.delete(persistent.getId());
-        return false; //TODO  implementMe
+        return true;
     }
 
     public Message get(Integer id) {
